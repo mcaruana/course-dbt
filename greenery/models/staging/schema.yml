@@ -12,7 +12,7 @@ models:
       - name: user_id
         tests:
           - relationships:
-              to: ref('users')
+              to: ref('stg_users')
               field: user_id
       - name: order_status
         tests:

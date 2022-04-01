@@ -1,8 +1,24 @@
 version: 2
 
 models:
+  - name: int_order_session
+    description: For order-related events within a session, describe what happened
+  - name: int_product_session
+    description: For a given session, describe the user's interaction with any product they viewed 
   - name: int_sessions_agg
     description: Aggregated metrics about a user's sessions
   - name: fct_user_sessions
     description: User-session-level metrics
+  - name: agg_product_outcomes
+    description: For a given product, provide metrics on different outcomes
+    tests:
+      - dbt_expectations.expect_column_pair_values_A_to_be_greater_than_B:
+          column_A: product_sessions
+          column_B: product_adds
+          or_equal: True
+      - dbt_expectations.expect_column_pair_values_A_to_be_greater_than_B:
+          column_A: product_adds
+          column_B: product_orders
+          or_equal: True
+
 

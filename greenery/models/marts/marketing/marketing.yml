@@ -3,4 +3,6 @@ version: 2
 models:
   - name: fct_promo_revenue
     description: Revenue figures and item volumes for each promotion
+  - name: fct_user_orders
+    description: Facts describing a user's order history
 

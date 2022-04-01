@@ -1,0 +1,7 @@
+version: 2
+
+macros:
+  - name: agg_session_events
+    description: Identifies the type of events and then calculates the frequency each occur during a given session
+    docs:
+      show: true

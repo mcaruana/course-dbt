@@ -13,9 +13,9 @@ select
     date_part('day',current_timestamp - max(sessions.session_end)) as days_since_last_session,
     count(sessions.session_id) as num_sessions,
     avg(sessions.session_length) as avg_session_length,
-    sum(sessions.num_page_views) as total_page_views,
-    sum(sessions.num_cart_adds) as total_cart_adds,
-    sum(sessions.num_checkouts) as total_checkouts 
+    sum(sessions.page_view) as total_page_views,
+    sum(sessions.add_to_cart) as total_cart_adds,
+    sum(sessions.checkout) as total_checkouts 
 from sessions
 left join users
   on sessions.user_id = users.user_id

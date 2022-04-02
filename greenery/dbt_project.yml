@@ -31,15 +31,15 @@ clean-targets:         # directories to be removed by `dbt clean`
 # In this example config, we tell dbt to build all models in the example/ directory
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
-models:
 vars:
   'dbt_date:time_zone': 'Etc/UCT'
+models:
   greenery:
     # Config indicated by + and applies to all files under models/example/
     example:
-      +materialized: view
+      + materialized: view
     staging:
-      +materialized: view
+      + materialized: view
     marts:
       +materialized: table
       core:
@@ -49,3 +49,10 @@ vars:
     - "GRANT SELECT ON {{ this }} TO reporting"
   on-run-end:
     - "GRANT USAGE ON {{ schema }} TO reporting"
+snapshots:
+  greenery:
+    order_snapshot:
+      + target_schema: dbt_mike_c
+      + unique_key: order_id
+      + strategy: check
+      + updated_at: status

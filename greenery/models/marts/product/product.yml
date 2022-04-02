@@ -20,5 +20,23 @@ models:
           column_A: product_adds
           column_B: product_orders
           or_equal: True
+  - name: agg_product_funnel
+    description: Daily and cumulative funnel metrics
+    tests:
+      - dbt_expectations.expect_column_pair_values_A_to_be_greater_than_B:
+          column_A: total_sessions
+          column_B: cart_sessions
+          or_equal: True
+      - dbt_expectations.expect_column_pair_values_A_to_be_greater_than_B:
+          column_A: cart_sessions
+          column_B: checkout_sessions
+          or_equal: True
+    columns:
+      - name: add_to_cart_rate
+        tests:
+          - positive_values
+      - name: conversion_rate
+        tests:
+          - positive_values
 
 

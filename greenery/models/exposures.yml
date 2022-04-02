@@ -1,0 +1,16 @@
+version: 2
+
+exposures:
+  
+  - name: Product Funnel Dash
+    type: dashboard
+    maturity: high
+    url: funnel.me
+    description: Current and time series view of key funnel metrics
+    
+    depends_on:
+      - ref('agg_product_funnel')
+      
+    owner:
+      name: Who's to Say?
+      email: data@greenery.com
